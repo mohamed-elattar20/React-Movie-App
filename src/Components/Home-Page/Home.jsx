@@ -13,10 +13,10 @@ import { useEffect, useState } from "react";
 // Components
 import Card from "../Card/Card";
 import Spinner from "../Spinner/Spinner";
+// Routing
 import { useNavigate } from "react-router";
 // Css
 import "./Home.css";
-
 const Home = () => {
   const options = [
     { value: "movie", label: "Movie" },
@@ -43,6 +43,7 @@ const Home = () => {
 
   const [selectedVal, setSelectedVal] = useState(null);
   const filterItems = (e) => {
+    // console.log(e);
     if (e) {
       setSelectedVal({ ...e });
     } else {
@@ -51,7 +52,7 @@ const Home = () => {
   };
   return (
     <>
-      <div className="container my-5">
+      <div className="container my-5 vh-100">
         <div className="row">
           <div className="col-sm-12 col-md-8 col-lg-10 d-flex ">
             <button

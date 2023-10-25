@@ -12,6 +12,7 @@ import Spinner from "../Spinner/Spinner";
 import Select from "react-select";
 // CSS
 import "./Search.css";
+import { Link } from "react-router-dom";
 const Search = () => {
   const [searchVal, setSearchVal] = useState("");
   const [selectedVal, setSelectedVal] = useState(null);
@@ -64,7 +65,59 @@ const Search = () => {
             />
           </div>
         </div>
-        {loading ? (
+        {searchMoviesList.length != 0 ? (
+          loading ? (
+            <div style={{ marginTop: "100px" }} className="row ">
+              <Spinner />
+            </div>
+          ) : error ? (
+            <h1 className="text-center display-1 my-5">{error}</h1>
+          ) : (
+            <div className="row my-5 g-4">
+              <h2 className="fw-medium display-4 mb-5 text-center ">
+                Search Results
+              </h2>
+              {searchMoviesList.map((movie) => {
+                if (selectedVal) {
+                  if (selectedVal.value === movie.media_type) {
+                    // console.log(selectedVal.value);
+                    return (
+                      <div key={movie.id} className="col-6 col-md-4 col-lg-3">
+                        <Card movie={movie} />
+                      </div>
+                    );
+                  }
+                } else {
+                  return (
+                    <div key={movie.id} className="col-6 col-md-4 col-lg-3">
+                      <Card movie={movie} />
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          )
+        ) : (
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-sm-12 col-md-6 col-lg-6 d-flex flex-column">
+                <img
+                  style={{ height: "400px", objectFit: "contain" }}
+                  src="https://tse3.mm.bing.net/th?id=OIP.-CiVIfCy46VrgitiIjfahwAAAA&pid=Api&P=0&h=220"
+                  alt=""
+                />
+                <Link
+                  to={`/`}
+                  className="btn btn-dark align-self-center d-block"
+                >
+                  Back To Home
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* {loading ? (
           <div style={{ marginTop: "100px" }} className="row ">
             <Spinner />
           </div>
@@ -94,7 +147,7 @@ const Search = () => {
               }
             })}
           </div>
-        )}
+        )} */}
       </div>
     </>
   );

@@ -99,7 +99,7 @@ const MovieDetails = () => {
                             })}
                           />
                         </p>
-                        <p className="card-text lead fw-bold  rounded-4 px-1 ">
+                        <p className="card-text lead fw-bold rounded-4 px-1 ">
                           Vote Count : {movieDetails.vote_count}
                         </p>
                         <p className="card-text lead fw-bold fs-5 overflow-hidden ">
@@ -117,16 +117,16 @@ const MovieDetails = () => {
                           <a
                             target="_blank"
                             href={`https://www.imdb.com/title/${movieDetails.imdb_id}/`}
-                            className="card-text lead fw-bold fs-4 d-block text-black text-decoration-none"
+                            className="w-75 lead fw-bold fs-4 d-block text-black text-decoration-none hover-anchor"
                           >
                             <FontAwesomeIcon
                               className="fs-4 mt-4"
                               icon={faCirclePlay}
                             />{" "}
                             <span>
-                              WATCH THE TRAILER |
+                              WATCH THE TRAILER
                               {movieDetails.runtime &&
-                                `${
+                                ` | ${
                                   toHoursAndMinutes(movieDetails.runtime).hours
                                 }h ${
                                   toHoursAndMinutes(movieDetails.runtime)

@@ -69,7 +69,7 @@ const Home = () => {
               className="w-100 border-0 outline-0 input-focus"
             />
           </div>
-          <div className="col-sm-12 col-md-8 col-lg-2 d-flex justify-content-end ">
+          <div className="col-sm-12 col-md-8 col-lg-2 my-3 d-flex justify-content-end ">
             <Select
               isClearable={true}
               value={selectedVal}
@@ -94,14 +94,14 @@ const Home = () => {
               if (selectedVal) {
                 if (selectedVal.value === movie.media_type) {
                   return (
-                    <div key={movie.id} className="col-6 col-md-4 col-lg-3">
+                    <div key={movie.id} className="col-6 col-md-3 col-lg-3">
                       <Card movie={movie} />
                     </div>
                   );
                 }
               } else {
                 return (
-                  <div key={movie.id} className="col-6 col-md-4 col-lg-3">
+                  <div key={movie.id} className="col-6 col-md-3 col-lg-3">
                     <Card movie={movie} />
                   </div>
                 );

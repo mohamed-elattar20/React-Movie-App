@@ -20,9 +20,10 @@ const MovieDetails = () => {
   useEffect(() => {
     dispatch(getMovieDetails({ id, media_type }));
   }, []);
+
   const date = new Date(
     (movieDetails.first_air_date && movieDetails?.first_air_date) ||
-      movieDetails.release_date
+      (movieDetails?.release_date && movieDetails.release_date)
   );
   const toHoursAndMinutes = (totalMinutes) => {
     const hours = Math.floor(totalMinutes / 60);
@@ -30,6 +31,8 @@ const MovieDetails = () => {
 
     return { hours, minutes };
   };
+  // console.log(movieDetails);
+
   return (
     <>
       {loading ? (
@@ -68,7 +71,11 @@ const MovieDetails = () => {
                     </div>
                     <div className=" col-sm-12 col-md-12 col-lg-8 ">
                       <div className="card-body rounded-3 ms-1 bg-light bg-opacity-25 text-black">
-                        <p className="card-text fw-bold">{`${date.getFullYear()}`}</p>
+                        {(movieDetails.first_air_date ||
+                          movieDetails.release_date) && (
+                          <p className="card-text fw-bold">{`${date.getFullYear()}`}</p>
+                        )}
+                        {/* <p className="card-text fw-bold">{`${date.getFullYear()}`}</p> */}
                         <h5 className="card-title fs-3  fw-bold">
                           {movieDetails.original_title ||
                             movieDetails.original_name}
